@@ -6,6 +6,8 @@ require("./models/User");
 
 const env = process.env["env"] || "development";
 
+let connectMattdotam;
+
 if (env === "production") {
 	app.use(express.static("client/build"));
 	app.get("*", (req, res) => {
@@ -13,11 +15,14 @@ if (env === "production") {
 			path.resolve(__dirname, "client", "build", "index.html")
 		);
 	});
+	connectMattdotam = () => {
+		return mongoose.connect("mongodb://localhost:27020/mattdotam");
+	};
+} else {
+	connectMattdotam = () => {
+		return mongoose.connect("mongodb://localhost:27017/mattdotam");
+	};
 }
-
-const connectMattdotam = () => {
-	return mongoose.connect("mongodb://localhost:27020/mattdotam");
-};
 
 connectMattdotam().catch(e => console.error(e));
 
