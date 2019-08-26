@@ -3,6 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const bodyParser = require("body-parser");
 require("./models/User");
 const env = require("./config/env");
 require("./services/passport");
