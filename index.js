@@ -1,7 +1,8 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
+const mongoose = require("mongoose");
+require("./models/User");
 
 const env = process.env["env"] || "development";
 
@@ -13,6 +14,12 @@ if (env === "production") {
 		);
 	});
 }
+
+const connectMattdotam = () => {
+	return mongoose.connect("mongodb://localhost:27017/mattdotam");
+};
+
+connectMattdotam();
 
 app.get("/", (req, res) => {
 	res.send({
