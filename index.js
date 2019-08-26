@@ -19,7 +19,7 @@ const connectMattdotam = () => {
 	return mongoose.connect("mongodb://localhost:27017/mattdotam");
 };
 
-connectMattdotam().catch(e => console.error(e));
+// connectMattdotam().catch(e => console.error(e));
 
 app.get("/", (req, res) => {
 	res.send({
