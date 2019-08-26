@@ -8,6 +8,9 @@ const env = require("./config/env");
 require("./services/passport");
 const keys = require("./config/keys");
 
+console.log(env);
+console.log(process.env);
+
 const connectMattdotam = () => {
 	return mongoose.connect(
 		`mongodb://localhost:${env.port}/mattdotam`
