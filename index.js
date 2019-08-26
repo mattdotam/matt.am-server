@@ -16,10 +16,10 @@ if (env === "production") {
 }
 
 const connectMattdotam = () => {
-	return mongoose.connect("mongodb://localhost:27017/mattdotam");
+	return mongoose.connect("mongodb://localhost:27020/mattdotam");
 };
 
-// connectMattdotam().catch(e => console.error(e));
+connectMattdotam().catch(e => console.error(e));
 
 app.get("/", (req, res) => {
 	res.send({
