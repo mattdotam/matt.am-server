@@ -8,9 +8,6 @@ const env = require("./config/env");
 require("./services/passport");
 const keys = require("./config/keys");
 
-console.log(env);
-console.log(process.env.NODE_ENV);
-
 const connectMattdotam = () => {
 	return mongoose.connect(
 		`mongodb://localhost:${env.port}/mattdotam`
@@ -34,7 +31,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 
-if (env === "production") {
+if (env.env === "production") {
 	app.use(express.static("client/build"));
 	app.get("*", (req, res) => {
 		res.sendFile(
