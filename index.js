@@ -9,7 +9,7 @@ require("./services/passport");
 const keys = require("./config/keys");
 
 console.log(env);
-console.log(process.env);
+console.log(process.env.NODE_ENV);
 
 const connectMattdotam = () => {
 	return mongoose.connect(
