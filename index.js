@@ -40,8 +40,8 @@ if (env.env === "production") {
 	});
 }
 
-console.log(
-	"Let's test creating the document for the dev output tracker"
-);
+console.log({
+	test: "inserting a document into mattdotam.dev db",
+});
 
 app.listen(1337);
