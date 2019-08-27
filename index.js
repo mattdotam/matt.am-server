@@ -5,6 +5,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 require("./models/User");
+require("./models/Commit");
 const env = require("./config/env");
 require("./services/passport");
 const keys = require("./config/keys");
@@ -33,6 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app);
+require("./routes/trackRoutes")(app);
 
 if (env.env === "production") {
 	const root = require("path").join(__dirname, "client", "build");
