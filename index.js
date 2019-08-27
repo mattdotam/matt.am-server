@@ -40,4 +40,8 @@ if (env.env === "production") {
 	});
 }
 
+console.log(
+	"Let's test creating the document for the dev output tracker"
+);
+
 app.listen(1337);
