@@ -11,7 +11,9 @@ const keys = require("./config/keys");
 
 const connectMattdotam = () => {
 	return mongoose.connect(
-		`mongodb://localhost:${env.port}/mattdotam`
+		`mongodb://${encodeURIComponent(keys.mongo)}@localhost:${
+			env.port
+		}/mattdotam`
 	);
 };
 
@@ -39,9 +41,5 @@ if (env.env === "production") {
 		res.sendFile("index.html", { root });
 	});
 }
-
-console.log({
-	test: "inserting a document into mattdotam.dev db",
-});
 
 app.listen(1337);
