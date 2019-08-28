@@ -38,10 +38,8 @@ require("./routes/trackRoutes")(app);
 if (env.env === "production") {
 	const root = path.join(__dirname, "client", "build");
 	app.use("/", express.static(root));
-	app.get("/*", (req, res) => {
-		res.sendFile("index.html", {
-			root: path.resolve("client", "build"),
-		});
+	app.get("*", (req, res) => {
+		res.sendFile("index.html", { root });
 	});
 }
 
