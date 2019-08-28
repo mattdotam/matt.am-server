@@ -7,6 +7,7 @@ const commitSchema = new Schema({
 	hash: String,
 	timestamp: Number,
 	subject: String,
+	project: String,
 });
 
 // Tying Schema to users collection

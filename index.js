@@ -12,9 +12,8 @@ const keys = require("./config/keys");
 
 const connectMattdotam = () => {
 	return mongoose.connect(
-		`mongodb://${encodeURIComponent(keys.mongo)}@localhost:${
-			env.port
-		}/mattdotam`
+		`mongodb://${keys.mongo}@localhost:${env.port}/mattdotam`,
+		{ useNewUrlParser: true }
 	);
 };
 
