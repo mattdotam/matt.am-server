@@ -7,6 +7,7 @@ const readSchema = new Schema({
 	author: String,
 	isbn: Number,
 	score: Number,
+	tags: [{ type: String }],
 	timestamp: Number,
 	notes: String,
 });
