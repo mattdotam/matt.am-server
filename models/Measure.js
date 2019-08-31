@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const measureSchema = new Schema({
 	height: Number,
+	weight: Number,
 	neck: Number,
 	chest: Number,
 	waist: Number,
