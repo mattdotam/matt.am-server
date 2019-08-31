@@ -5,23 +5,36 @@ const Workout = mongoose.model("workout");
 
 module.exports = app => {
 	app.post("/api/workouts", requireLogin, (req, res) => {
-		const { id, timestamp } = req.body;
-		const [activities] = req.body;
-
+		const { id, timestamp, activities } = req.body;
 		const workout = new Workout({
 			id,
 			timestamp,
-			activities: activities.map(a => ({
-				name: a.name,
-				tags: a.tags,
-				comment: a.comment,
-				distance: a.distance,
-				duration: a.duration,
-				sets: a.sets.map(s => ({
-					reps: s.reps,
-					weight: s.weight,
-				})),
-			})),
+			activities: activities.map(a => {
+				if (Array.isArray(a.sets)) {
+					return {
+						name: a.name,
+						tags: a.tags,
+						comment: a.comment,
+						distance: a.distance,
+						duration: a.duration,
+						sets: a.sets.map(s => {
+							return {
+								reps: s.reps,
+								weight: s.weight,
+							};
+						}),
+					};
+				} else {
+					return {
+						name: a.name,
+						tags: a.tags,
+						comment: a.comment,
+						distance: a.distance,
+						duration: a.duration,
+						sets: null,
+					};
+				}
+			}),
 		});
 
 		try {
@@ -29,5 +42,7 @@ module.exports = app => {
 		} catch (err) {
 			res.status(422).send(err);
 		}
+
+		res.redirect(`/fit/${workout.id}`);
 	});
 };
