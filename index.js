@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 require("./models/User");
 require("./models/Commit");
 require("./models/Tweet");
+require("./models/Workout");
 const env = require("./config/env");
 require("./services/passport");
 const keys = require("./config/keys");
@@ -35,6 +36,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/trackRoutes")(app);
+require("./routes/workoutRoutes")(app);
 
 if (env.env === "production") {
 	const root = path.join(__dirname, "client", "build");

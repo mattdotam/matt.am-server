@@ -3,10 +3,11 @@ const { Schema } = mongoose;
 
 const workoutSchema = new Schema({
 	timestamp: Number,
+	id: String,
 	activities: [
 		{
 			name: String,
-			tags: [{ type: String }],
+			tags: [String],
 			comment: String,
 			distance: Number,
 			duration: Number,
