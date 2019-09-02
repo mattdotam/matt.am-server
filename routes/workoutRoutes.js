@@ -4,6 +4,11 @@ const requireLogin = require("../middlewares/requireLogin");
 const Workout = mongoose.model("workout");
 
 module.exports = app => {
+	app.get("/api/workouts/:id", (req, res) => {
+		Workout.find({ id: req.params.id }).then(data => {
+			res.send(data);
+		});
+	});
 	app.post("/api/workouts", requireLogin, (req, res) => {
 		const { id, timestamp, activities } = req.body;
 		const workout = new Workout({
