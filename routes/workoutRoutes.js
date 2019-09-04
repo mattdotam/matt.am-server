@@ -44,10 +44,9 @@ module.exports = app => {
 
 		try {
 			workout.save();
+			res.send(workout.id);
 		} catch (err) {
 			res.status(422).send(err);
 		}
-
-		res.redirect(`/fit/${workout.id}`);
 	});
 };
