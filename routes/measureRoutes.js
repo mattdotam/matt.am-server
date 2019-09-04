@@ -8,6 +8,7 @@ module.exports = app => {
 		Measure.find({ id: req.params.id }).then(data => {
 			res.send(data);
 		});
+	});
 	app.post("/api/measures", requireLogin, (req, res) => {
 		const m = req.body;
 		const measure = new Measure({

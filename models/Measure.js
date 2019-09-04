@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const measureSchema = new Schema({
+	id: String,
 	height: Number,
 	weight: Number,
 	neck: Number,
