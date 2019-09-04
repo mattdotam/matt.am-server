@@ -10,6 +10,7 @@ require("./models/Tweet");
 require("./models/Workout");
 require("./models/Measure");
 require("./models/SupplementRef");
+require("./models/Supplement");
 const env = require("./config/env");
 require("./services/passport");
 const keys = require("./config/keys");
@@ -44,6 +45,7 @@ require("./routes/trackRoutes")(app);
 require("./routes/workoutRoutes")(app);
 require("./routes/measureRoutes")(app);
 require("./routes/supplementRefRoutes")(app);
+require("./routes/supplementRoutes")(app);
 
 if (env.env === "production") {
 	const root = path.join(__dirname, "client", "build");
