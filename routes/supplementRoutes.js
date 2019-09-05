@@ -12,8 +12,8 @@ module.exports = app => {
 	app.post("/api/supplements", requireLogin, (req, res) => {
 		const { id, timestamp, name, unit, quantity } = req.body;
 		const supplement = new Supplement({
-			timestamp,
 			id,
+			timestamp,
 			name,
 			unit,
 			quantity,
