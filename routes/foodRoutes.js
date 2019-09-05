@@ -4,6 +4,11 @@ const requireLogin = require("../middlewares/requireLogin");
 const Food = mongoose.model("food");
 
 module.exports = app => {
+	app.get("/api/foods", (req, res) => {
+		Food.find({}).then(data => {
+			res.send(data);
+		});
+	});
 	app.get("/api/foods/:string", (req, res) => {
 		Food.find({
 			name: new RegExp(`${req.params.id}`, "i"),
