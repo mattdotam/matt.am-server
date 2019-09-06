@@ -6,12 +6,14 @@ const Food = mongoose.model("food");
 module.exports = app => {
 	app.get("/api/foods", (req, res) => {
 		Food.find({}).then(data => {
-			res.send(data);
+			let results = [];
+			data.forEach(r => results.push({ name: r.name, id: r.id }));
+			res.send(results);
 		});
 	});
-	app.get("/api/foods/:string", (req, res) => {
+	app.get("/api/foods/:id", (req, res) => {
 		Food.find({
-			name: new RegExp(`${req.params.id}`, "i"),
+			id: `${req.params.id}`,
 		}).then(data => {
 			res.send(data);
 		});
