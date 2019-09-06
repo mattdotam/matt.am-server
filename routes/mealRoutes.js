@@ -23,7 +23,7 @@ module.exports = app => {
 					fat: f.fat,
 					carbs: f.carbs,
 					fibre: f.fibre,
-					energy: f.fibre,
+					energy: f.energy,
 				};
 			}),
 		});
