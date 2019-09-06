@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const devlogSchema = new Schema({
-	duration: Number,
-	timestamp: Number,
+	date: String,
+	rows: [[String, Number, Number, String]],
 });
 
 mongoose.model("devlog", devlogSchema);

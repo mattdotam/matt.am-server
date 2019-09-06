@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 require("./models/User");
 require("./models/Commit");
 require("./models/Tweet");
+require("./models/Devlog");
 require("./models/Workout");
 require("./models/Food");
 require("./models/Meal");
