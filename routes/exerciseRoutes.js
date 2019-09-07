@@ -4,12 +4,12 @@ const requireLogin = require("../middlewares/requireLogin");
 const Exercise = mongoose.model("exercise");
 
 module.exports = app => {
-	app.get("/api/exercises/:id", (req, res) => {
-		Exercise.find({ id: req.params.id }).then(data => {
+	app.get("/api/exercises", (req, res) => {
+		Exercise.find({}).then(data => {
 			res.send(data);
 		});
 	});
-	app.post("/api/exercise", requireLogin, (req, res) => {
+	app.post("/api/exercises", requireLogin, (req, res) => {
 		const { id, name, tags } = req.body;
 		const exercise = new Exercise({
 			id,

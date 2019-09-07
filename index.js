@@ -46,6 +46,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/trackRoutes")(app);
+require("./routes/exerciseRoutes")(app);
 require("./routes/workoutRoutes")(app);
 require("./routes/foodRoutes")(app);
 require("./routes/mealRoutes")(app);

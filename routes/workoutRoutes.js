@@ -18,6 +18,7 @@ module.exports = app => {
 				if (Array.isArray(a.sets)) {
 					return {
 						name: a.name,
+						id: a.id,
 						tags: a.tags,
 						comment: a.comment,
 						distance: a.distance,
@@ -32,6 +33,7 @@ module.exports = app => {
 				} else {
 					return {
 						name: a.name,
+						id: a.id,
 						tags: a.tags,
 						comment: a.comment,
 						distance: a.distance,
