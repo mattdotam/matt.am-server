@@ -17,17 +17,29 @@ module.exports = app => {
 		});
 	});
 	app.post("/api/supplementrefs", requireLogin, (req, res) => {
-		const { name, unit } = req.body;
+		const { id, name, unit } = req.body;
 		const supplementRef = new SupplementRef({
+			id,
 			name,
 			unit,
 		});
-
 		try {
 			supplementRef.save();
 			res.send(supplementRef.name);
 		} catch (err) {
 			res.status(422).send(err);
 		}
+	});
+	app.put("/api/supplementrefs", requireLogin, (req, res) => {
+		const { id, name, unit } = req.body;
+		SupplementRef.update({ id: id }, { name, unit }).then(data => {
+			res.send(data);
+		});
+	});
+	app.delete("/api/supplementrefs/:id", requireLogin, (req, res) => {
+		const id = req.params.id;
+		SupplementRef.deleteOne({ id: id }, err => {
+			res.send(err);
+		});
 	});
 };
