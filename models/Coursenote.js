@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const coursenoteSchema = new Schema({
+	id: String,
 	title: String,
 	slug: String,
-	tags: [{ type: String }],
+	tags: [String],
 	content: String,
 	courselink: String,
 	lecturer: String,

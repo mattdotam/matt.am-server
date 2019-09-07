@@ -15,6 +15,7 @@ require("./models/Meal");
 require("./models/SupplementRef");
 require("./models/Supplement");
 require("./models/Measure");
+require("./models/Coursenote");
 const env = require("./config/env");
 require("./services/passport");
 const keys = require("./config/keys");
@@ -53,6 +54,7 @@ require("./routes/mealRoutes")(app);
 require("./routes/measureRoutes")(app);
 require("./routes/supplementRefRoutes")(app);
 require("./routes/supplementRoutes")(app);
+require("./routes/coursenoteRoutes")(app);
 
 if (env.env === "production") {
 	const root = path.join(__dirname, "client", "build");
