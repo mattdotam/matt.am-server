@@ -16,12 +16,23 @@ module.exports = app => {
 			name,
 			tags,
 		});
-
 		try {
 			exercise.save();
 			res.send(exercise.id);
 		} catch (err) {
 			res.status(422).send(err);
 		}
+	});
+	app.put("/api/exercises", requireLogin, (req, res) => {
+		const { id, name, tags } = req.body;
+		Exercise.update({ id: id }, { name, tags }).then(data => {
+			res.send(data);
+		});
+	});
+	app.delete("/api/exercises/:id", requireLogin, (req, res) => {
+		const id = req.params.id;
+		Exercise.deleteOne({ id: id }, err => {
+			res.send(err);
+		});
 	});
 };
