@@ -9,8 +9,10 @@ const coursenoteSchema = new Schema({
 	content: String,
 	courselink: String,
 	lecturer: String,
+	lecturerTwitter: String,
 	published: Number,
 	lastEdit: Number,
+	audience: String,
 });
 
 mongoose.model("coursenote", coursenoteSchema);
