@@ -6,7 +6,7 @@ const Exercise = mongoose.model("exercise");
 module.exports = app => {
 	app.get("/api/exercises", (req, res) => {
 		Exercise.find({}).then(data => {
-			res.send(data);
+			res.status(200).send(data);
 		});
 	});
 	app.post("/api/exercises", requireLogin, (req, res) => {
@@ -18,7 +18,7 @@ module.exports = app => {
 		});
 		try {
 			exercise.save();
-			res.send(exercise.id);
+			res.status(201).send();
 		} catch (err) {
 			res.status(422).send(err);
 		}
@@ -26,13 +26,15 @@ module.exports = app => {
 	app.put("/api/exercises", requireLogin, (req, res) => {
 		const { id, name, tags } = req.body;
 		Exercise.update({ id: id }, { name, tags }).then(data => {
-			res.send(data);
+			res.status(200).send(data);
 		});
 	});
 	app.delete("/api/exercises/:id", requireLogin, (req, res) => {
 		const id = req.params.id;
 		Exercise.deleteOne({ id: id }, err => {
 			res.send(err);
+		}).then(res => {
+			res.status(200).send(res);
 		});
 	});
 };
