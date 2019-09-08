@@ -41,8 +41,8 @@ module.exports = app => {
 			mmol: m.mmol,
 		});
 		try {
-			measure.status(201).save();
-			res.send(measure.id);
+			measure.save();
+			res.status(201).send(measure.id);
 		} catch (err) {
 			res.status(422).send(err);
 		}
