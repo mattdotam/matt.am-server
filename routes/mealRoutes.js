@@ -4,7 +4,7 @@ const requireLogin = require("../middlewares/requireLogin");
 const Meal = mongoose.model("meal");
 
 module.exports = app => {
-	app.get("/api/meals/", (req, res) => {
+	app.get("/api/meals", (req, res) => {
 		Meal.find({}).then(data => {
 			let results = [];
 			data.forEach(r =>
