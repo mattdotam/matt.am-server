@@ -7,6 +7,7 @@ const workoutSchema = new Schema({
 	activities: [
 		{
 			name: String,
+			id: String,
 			tags: [String],
 			comment: String,
 			distance: Number,
