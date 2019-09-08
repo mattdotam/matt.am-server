@@ -78,7 +78,7 @@ module.exports = app => {
 			res.status(200).send(data);
 		});
 	});
-	app.delete("/api/meal/:id", requireLogin, (req, res) => {
+	app.delete("/api/meals/:id", requireLogin, (req, res) => {
 		const id = req.params.id;
 		Meal.deleteOne({ id }, err => {
 			res.send(err);
