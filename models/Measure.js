@@ -19,6 +19,7 @@ const measureSchema = new Schema({
 	calfL: Number,
 	calfR: Number,
 	mmol: Number,
+	bodyfat: Number,
 	timestamp: Number,
 });
 

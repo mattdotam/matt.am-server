@@ -39,6 +39,7 @@ module.exports = app => {
 			calfL: m.calfL,
 			calfR: m.calfR,
 			mmol: m.mmol,
+			bodyfat: m.bodyfat,
 		});
 		try {
 			measure.save();
@@ -69,6 +70,7 @@ module.exports = app => {
 				calfL: m.calfL,
 				calfR: m.calfR,
 				mmol: m.mmol,
+				bodyfat: m.bodyfat,
 			}
 		).then(data => {
 			res.status(200).send(data);
