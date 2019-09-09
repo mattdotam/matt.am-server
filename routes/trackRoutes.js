@@ -2,8 +2,46 @@ const mongoose = require("mongoose");
 const Commit = mongoose.model("commit");
 const Tweet = mongoose.model("tweet");
 const Devlog = mongoose.model("devlog");
+const Workout = mongoose.model("workout");
+const Meal = mongoose.model("meal");
+const Supplement = mongoose.model("supplement");
+const Measure = mongoose.model("measure");
 
 module.exports = app => {
+	app.get("/api/track/health/:date", async (req, res) => {
+		const results = {
+			workouts: [],
+			meals: [],
+			supplements: [],
+			measures: [],
+		};
+		results.workouts = await Workout.find({
+			timestamp: {
+				$gte: req.params.date,
+				$lte: Number(req.params.date) + 86399,
+			},
+		});
+		results.meals = await Meal.find({
+			timestamp: {
+				$gte: req.params.date,
+				$lte: Number(req.params.date) + 86399,
+			},
+		});
+		results.supplements = await Supplement.find({
+			timestamp: {
+				$gte: req.params.date,
+				$lte: Number(req.params.date) + 86399,
+			},
+		});
+		results.measures = await Measure.find({
+			timestamp: {
+				$lte: Number(req.params.date) + 86399,
+			},
+		})
+			.sort({ timestamp: -1 })
+			.limit(2);
+		res.send(results);
+	});
 	app.get("/api/track/commits/:date", (req, res) => {
 		Commit.find({
 			timestamp: {
