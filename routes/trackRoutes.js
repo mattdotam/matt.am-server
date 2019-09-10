@@ -20,12 +20,25 @@ module.exports = app => {
 				$gte: req.params.date,
 				$lte: Number(req.params.date) + 86399,
 			},
+		}).select({
+			_id: false,
+			id: false,
+			"activities._id": false,
+			"activities.id": false,
+			"activities.sets._id": false,
 		});
 		results.meals = await Meal.find({
 			timestamp: {
 				$gte: req.params.date,
 				$lte: Number(req.params.date) + 86399,
 			},
+		}).select({
+			id: false,
+			_id: false,
+			"food._id": false,
+			"food.name": false,
+			"food.quantity": false,
+			"food.unit": false,
 		});
 		results.supplements = await Supplement.find({
 			timestamp: {
@@ -38,6 +51,7 @@ module.exports = app => {
 				$lte: Number(req.params.date) + 86399,
 			},
 		})
+			.select({ weight: true, timestamp: true, _id: false })
 			.sort({ timestamp: -1 })
 			.limit(2);
 		res.send(results);

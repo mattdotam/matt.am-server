@@ -2,16 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const sleepSchema = new Schema({
-	fromTime: Number,
-	toTime: Number,
-	lengthMinutes: Number,
-	rating: Number,
-	deepSleep: Number,
-	cycles: Number,
-	timezone: String,
-	noiseLevel: Number,
-	tags: [String],
-	actigraph: [Number],
+	id: Number,
+	from: Number,
+	to: Number,
+	hours: Number,
 });
 
 mongoose.model("sleep", sleepSchema);
