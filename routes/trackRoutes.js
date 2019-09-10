@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Commit = mongoose.model("commit");
 const Tweet = mongoose.model("tweet");
 const Devlog = mongoose.model("devlog");
+const Sleep = mongoose.model("sleep");
 const Workout = mongoose.model("workout");
 const Meal = mongoose.model("meal");
 const Supplement = mongoose.model("supplement");
@@ -14,7 +15,27 @@ module.exports = app => {
 			meals: [],
 			supplements: [],
 			measures: [],
+			sleeps: [],
 		};
+		results.sleeps = await Sleep.find({
+			$or: [
+				{
+					from: {
+						$gte: req.params.date,
+						$lte: Number(req.params.date) + 86399,
+					},
+				},
+				{
+					to: {
+						$gte: req.params.date,
+						$lte: Number(req.params.date) + 86399,
+					},
+				},
+			],
+		}).select({
+			_id: false,
+			id: false,
+		});
 		results.workouts = await Workout.find({
 			timestamp: {
 				$gte: req.params.date,
