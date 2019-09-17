@@ -21,13 +21,13 @@ module.exports = app => {
 			$or: [
 				{
 					from: {
-						$gte: req.params.date,
+						$gte: Number(req.params.date),
 						$lte: Number(req.params.date) + 86399,
 					},
 				},
 				{
 					to: {
-						$gte: req.params.date,
+						$gte: Number(req.params.date),
 						$lte: Number(req.params.date) + 86399,
 					},
 				},

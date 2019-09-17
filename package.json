@@ -6,7 +6,8 @@
 	"scripts": {
 		"server": "nodemon index.js",
 		"client": "(cd ../client && npm run start)",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"deploy": "git pull origin master && git push live master"
 	},
 	"author": "",
 	"license": "ISC",
