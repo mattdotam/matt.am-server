@@ -4,6 +4,11 @@ const { Schema } = mongoose;
 // Schema for commits
 const commitSchema = new Schema({
 	netloc: Number,
+	loc: {
+		total: Number,
+		additions: Number,
+		deletions: Number,
+	},
 	hash: String,
 	timestamp: Number,
 	subject: String,
