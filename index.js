@@ -6,6 +6,7 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 require("./models/User");
 require("./models/Commit");
+require("./models/Kata");
 require("./models/Tweet");
 require("./models/Devlog");
 require("./models/Sleep");

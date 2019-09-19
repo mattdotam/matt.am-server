@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Commit = mongoose.model("commit");
+const Kata = mongoose.model("kata");
 const Tweet = mongoose.model("tweet");
 const Devlog = mongoose.model("devlog");
 const Sleep = mongoose.model("sleep");
@@ -79,6 +80,16 @@ module.exports = app => {
 	});
 	app.get("/api/track/commits/:date", (req, res) => {
 		Commit.find({
+			timestamp: {
+				$gte: req.params.date,
+				$lte: Number(req.params.date) + 86399,
+			},
+		}).then(data => {
+			res.send(data);
+		});
+	});
+	app.get("/api/track/katas/:date", (req, res) => {
+		Kata.find({
 			timestamp: {
 				$gte: req.params.date,
 				$lte: Number(req.params.date) + 86399,
