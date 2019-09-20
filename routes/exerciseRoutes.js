@@ -35,7 +35,7 @@ module.exports = app => {
 					],
 				})
 					.select({ timestamp: true, _id: false, activities: true })
-					.sort({ timestamp: 1 })
+					.sort({ timestamp: -1 })
 					.limit(Number(number));
 			} else if (find === "future") {
 				results = await Workout.find({
@@ -51,7 +51,7 @@ module.exports = app => {
 					],
 				})
 					.select({ timestamp: true, _id: false, activities: true })
-					.sort({ timestamp: -1 })
+					.sort({ timestamp: 1 })
 					.limit(Number(number));
 			}
 		}
